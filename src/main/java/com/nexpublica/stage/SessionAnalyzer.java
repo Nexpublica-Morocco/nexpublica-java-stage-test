@@ -1,14 +1,7 @@
 package com.nexpublica.stage;
 
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * <h2>Specification — total logged-in time per user</h2>
@@ -40,57 +33,7 @@ import java.util.Objects;
 public final class SessionAnalyzer {
 
     public Map<String, Long> totalSessionSecondsPerUser(List<Event> events) {
-        Objects.requireNonNull(events, "events");
-        if (events.isEmpty()) {
-            return Map.of();
-        }
-
-        Instant globalLast = events.stream()
-                .map(Event::timestamp)
-                .max(Instant::compareTo)
-                .orElseThrow();
-
-        record Indexed(int index, Event event) {}
-        List<Indexed> sorted = new ArrayList<>();
-        for (int i = 0; i < events.size(); i++) {
-            sorted.add(new Indexed(i, events.get(i)));
-        }
-        sorted.sort(Comparator.comparing((Indexed x) -> x.event.timestamp())
-                .thenComparingInt(Indexed::index));
-
-        Map<String, Long> totals = new HashMap<>();
-        Map<String, Instant> openSince = new HashMap<>();
-
-        for (Indexed idx : sorted) {
-            Event e = idx.event;
-            String user = e.user();
-            String action = e.action().trim().toUpperCase(Locale.ROOT);
-
-            switch (action) {
-                case "LOGIN" -> {
-                    if (!openSince.containsKey(user)) {
-                        openSince.put(user, e.timestamp());
-                    }
-                }
-                case "LOGOUT" -> {
-                    Instant start = openSince.remove(user);
-                    if (start != null) {
-                        addSeconds(totals, user, Duration.between(start, e.timestamp()));
-                    }
-                }
-                default -> { /* ignore */ }
-            }
-        }
-
-        for (Map.Entry<String, Instant> entry : openSince.entrySet()) {
-            addSeconds(totals, entry.getKey(), Duration.between(entry.getValue(), globalLast));
-        }
-
-        totals.entrySet().removeIf(e -> e.getValue() == 0L);
-        return totals;
-    }
-
-    private static void addSeconds(Map<String, Long> totals, String user, Duration d) {
-        totals.merge(user, d.getSeconds(), Long::sum);
+        throw new UnsupportedOperationException(
+                "TODO: implement — run mvn test until all tests pass");
     }
 }
