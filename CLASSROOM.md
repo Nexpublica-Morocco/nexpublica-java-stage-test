@@ -1,26 +1,36 @@
-# GitHub Classroom — teacher workflow
+# GitHub Classroom — Nexpublica Java stage test
 
-This repository is the **starter template** for the Nexpublica Morocco **Java internship technical test** (session analysis).
+## Repository layout (Maven)
 
-## Update this template and push
+- Candidates run **`mvn test`** from the repository root.
+- Java 17+ required (GitHub Actions uses Temurin 17).
+
+## Creating a candidate starter (no solution on `main`)
+
+If `main` includes the reference solution for CI:
+
+1. Create branch **`candidate-starter`** from the commit **before** the solution, or strip the method body on a new branch:
+   ```bash
+   git checkout -b candidate-starter main
+   # edit SessionAnalyzer: replace method body with TODO / UnsupportedOperationException
+   git commit -am "chore: starter without solution for Classroom"
+   git push -u origin candidate-starter
+   ```
+2. In Classroom, set the **default branch** of the assignment to `candidate-starter`, or use a **template repository** generated from that branch.
+
+## Update workflow
 
 ```bash
-cd nexpublica-java-stage-test
-# edit files, then:
-git add -A
-git commit -m "Describe your change"
+git checkout main
+# edit src/main/java/.../SessionAnalyzer.java and/or tests
+mvn test
 git push origin main
 ```
 
-Use a **Personal Access Token (classic)** or **SSH key** if HTTPS asks for a password. With GitHub CLI: `gh auth login` then `git push`.
+Re-copy or merge into `candidate-starter` when you change **tests** or **spec**; avoid merging solution into `candidate-starter`.
 
-## Point GitHub Classroom here
+## Assignment settings
 
-1. [GitHub Classroom](https://classroom.github.com) → your class → **New assignment**.
-2. **Starter code**: set repository to `Nexpublica-Morocco/nexpublica-java-stage-test` (or a **template** copy if you prefer not to mutate this repo).
-3. Prefer marking the starter repo as a **Template repository** (Settings → Template repository) and create assignments from the template for each wave.
-
-## Per campaign
-
-- **Duplicate the assignment** in Classroom for each intake (do not reuse the same assignment roster).
-- After changing the starter, **existing student repos are not updated** automatically; only **new** acceptances get the new commit.
+- **Individual** assignment recommended.
+- Enable **feedback pull requests** if you want review before merge.
+- **Private** student repos recommended.
