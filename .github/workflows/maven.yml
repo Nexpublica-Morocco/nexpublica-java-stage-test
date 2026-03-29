@@ -1,10 +1,11 @@
 name: Java CI
 
+# Inclure candidate-starter : souvent la branche par défaut des repos créés depuis Classroom.
 on:
   push:
-    branches: [main]
+    branches: [main, candidate-starter]
   pull_request:
-    branches: [main]
+    branches: [main, candidate-starter]
 
 jobs:
   test:
