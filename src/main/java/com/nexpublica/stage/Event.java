@@ -22,7 +22,7 @@ public final class Event {
         return user;
     }
 
-    /** Normalised to upper-case for comparison: {@code LOGIN}, {@code LOGOUT}. */
+    /** Raw action label; {@link SessionAnalyzer} treats {@code login} / {@code logout} case-insensitively. */
     public String action() {
         return action;
     }

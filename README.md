@@ -24,7 +24,7 @@ mvn test
 
 ## For maintainers (Nexpublica)
 
-- **`main` branch** contains a **reference implementation** so CI stays green and reviewers have a baseline.
+- **`main` branch** contains a **reference implementation** so CI stays green and reviewers have a baseline. Before a campaign: run `mvn test` locally and confirm **GitHub Actions** is green on `main`.
 - For a **candidate-facing starter without solution**:
   1. Replace the body of `SessionAnalyzer.totalSessionSecondsPerUser` with `throw new UnsupportedOperationException("TODO");` (keep the specification Javadoc).
   2. Use that commit as a **template** or **orphan branch** for GitHub Classroom, **or** maintain a long-lived branch `candidate-starter` (recommended).
