@@ -1,7 +1,8 @@
 name: Java CI
 
-# Inclure candidate-starter : souvent la branche par défaut des repos créés depuis Classroom.
+# Includes candidate-starter: default branch for many Classroom-generated repos.
 on:
+  workflow_dispatch:
   push:
     branches: [main, candidate-starter]
   pull_request:
@@ -18,4 +19,4 @@ jobs:
           java-version: "17"
           cache: maven
       - name: Run tests
-        run: mvn -B verify
+        run: mvn -B --no-transfer-progress verify

@@ -1,12 +1,14 @@
 # Java internship technical test — session analytics
 
-Professional take-home exercise for **internship (stage)** campaigns. Stack: **Java 17**, **Maven**, **JUnit 5**.
+Take-home exercise for **internship (stage)** hiring. Stack: **Java 17**, **Maven**, **JUnit 5**.
+
+**New here?** Read **[ASSIGNMENT.md](ASSIGNMENT.md)** first (setup, checks, troubleshooting).
 
 ## What candidates do
 
 1. Read the specification in `SessionAnalyzer` (class-level Javadoc).
-2. Implement `totalSessionSecondsPerUser(List<Event>)` so that **`mvn test` passes**.
-3. Push to their **GitHub Classroom** repository (or the branch you specify).
+2. Implement `totalSessionSecondsPerUser(List<Event>)` until **`mvn test`** passes.
+3. Push to your **GitHub Classroom** repository.
 
 Parsing `events.sample.json` is **optional**; all official tests build `Event` objects in code.
 
@@ -16,26 +18,39 @@ Parsing `events.sample.json` is **optional**; all official tests build `Event` o
 mvn test
 ```
 
+From the **repository root** (where `pom.xml` is).
+
 ## Use of AI (Copilot, ChatGPT, etc.)
 
 - **Allowed.** We assume candidates will use assistants.
-- **Expectation:** they must **explain and justify** their solution in a live interview (trade-offs, edge cases, complexity). Blind copy-paste without understanding fails the human review.
-- Automated tests are there to check **behaviour**, not originality.
+- **Expectation:** you must **explain and justify** your solution in a live interview (trade-offs, edge cases, complexity). Copy-paste without understanding fails the human review.
+- Automated tests check **behaviour**, not originality.
 
-## For maintainers (Nexpublica)
+## For Nexpublica (GitHub Classroom)
 
-- **`main` branch** contains a **reference implementation** so CI stays green and reviewers have a baseline.
-- For a **candidate-facing starter without solution**:
-  1. Replace the body of `SessionAnalyzer.totalSessionSecondsPerUser` with `throw new UnsupportedOperationException("TODO");` (keep the specification Javadoc).
-  2. Use that commit as a **template** or **orphan branch** for GitHub Classroom, **or** maintain a long-lived branch `candidate-starter` (recommended).
-- See `CLASSROOM.md` for Classroom wiring.
+### Correct starter repository
+
+Use **`Nexpublica-Morocco/nexpublica-java-stage-test`** as the assignment starter (mark as **template** on GitHub if required).
+
+Do **not** use auto-generated repos such as `nexpublica-morocco-classroom-ad65c9-java-engineering-test-nexpublica-java-stage-test` (old layout without `pom.xml` / tests).
+
+### Branches
+
+| Branch | Purpose |
+|--------|---------|
+| **`candidate-starter`** | Default branch for **students** — `SessionAnalyzer` throws `UnsupportedOperationException` until they implement. CI is **red** until tests pass. |
+| **`main`** | **Reference solution** for reviewers; CI should stay **green**. |
+
+See **[CLASSROOM.md](CLASSROOM.md)** for maintenance and sync steps.
 
 ## Project layout
 
 ```
+pom.xml
+ASSIGNMENT.md          — candidate quick start
 src/main/java/com/nexpublica/stage/
   Event.java           — immutable event (do not change contract)
-  SessionAnalyzer.java — candidate work (spec + implementation)
+  SessionAnalyzer.java — your work (spec + implementation)
 src/test/java/.../SessionAnalyzerTest.java — black-box tests
 src/main/resources/events.sample.json — optional JSON exercise
 ```

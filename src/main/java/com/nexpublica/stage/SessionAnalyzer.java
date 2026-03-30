@@ -1,4 +1,4 @@
-package com.nexpublica.stage;
+﻿package com.nexpublica.stage;
 
 import java.util.List;
 import java.util.Map;
@@ -34,9 +34,8 @@ import java.util.Objects;
 public final class SessionAnalyzer {
 
     public Map<String, Long> totalSessionSecondsPerUser(List<Event> events) {
-        // Aligné avec la spec / solution : null interdit (les tests attendent une NPE).
         Objects.requireNonNull(events, "events");
         throw new UnsupportedOperationException(
-                "TODO: implement — run mvn test until all tests pass");
+                "TODO: implement SessionAnalyzer - run mvn test until green");
     }
 }
