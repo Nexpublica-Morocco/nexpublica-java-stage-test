@@ -1,5 +1,13 @@
 # GitHub Classroom — Nexpublica Java stage test
 
+## Starter repository (required)
+
+Classroom assignment **starter code** must be:
+
+**`https://github.com/Nexpublica-Morocco/nexpublica-java-stage-test`**
+
+If students receive a repo with only `events.json` and a `java/` folder and **no `pom.xml`**, the assignment points at the **wrong** repository. Fix the assignment or duplicate it with the correct starter.
+
 ## Repository layout (Maven)
 
 - Candidates run **`mvn test`** from the repository root.
